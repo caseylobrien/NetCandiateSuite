@@ -7,8 +7,9 @@ namespace NetCandidateSuiteTests
     [TestClass]
     public class StringManipulationTests
     {
+        #region GetChatAt Tests
         [TestMethod]
-        public void GetCharAtThrowArgumentOutOfRangeExceptionForEmptyInput()
+        public void GetCharAtThrowArgumentNullExceptionForEmptyInput()
         {
             Action action = () => StringManipulation.GetCharAt(String.Empty, 1);
 
@@ -16,7 +17,7 @@ namespace NetCandidateSuiteTests
         }
 
         [TestMethod]
-        public void GetCharAtThrowArgumentOutOfRangeExceptionForNullInput()
+        public void GetCharAtThrowArgumentNullExceptionForNullInput()
         {
             Action action = () => StringManipulation.GetCharAt(null, 1);
 
@@ -86,5 +87,45 @@ namespace NetCandidateSuiteTests
 
             Assert.AreEqual(result, 'e');
         }
+        #endregion
+
+        #region ReverseWithDash Tests
+        [TestMethod]
+        public void ReverseWithDashThrowsArgumentNullExceptionForNullInput()
+        {
+            Action action = () => StringManipulation.ReverseWithDash(null);
+
+            Assert.ThrowsException<ArgumentNullException>(action);
+        }
+
+        [TestMethod]
+        public void ReverseWithDashThrowsArgumentNullExceptionForEmptyInput()
+        {
+            Action aciton = () => StringManipulation.ReverseWithDash(String.Empty);
+
+            Assert.ThrowsException<ArgumentNullException>(aciton);
+        }
+
+        [TestMethod]
+        public void ReverseWithDashCorrectResultSingleWord()
+        {
+            var input = "hello";
+
+            var result = StringManipulation.ReverseWithDash(input);
+
+            Assert.IsTrue(String.Equals(result, "o-l-l-e-h"));
+        }
+
+        [TestMethod]
+        public void ReverseWithDashCorrectResultMultipleWords()
+        {
+            var input = "test with multiple words";
+            var expectedResult = "s-d-r-o-w- -e-l-p-i-t-l-u-m- -h-t-i-w- -t-s-e-t";
+
+            var result = StringManipulation.ReverseWithDash(input);
+
+            Assert.IsTrue(String.Equals(result, expectedResult));
+        }
+        #endregion
     }
 }
