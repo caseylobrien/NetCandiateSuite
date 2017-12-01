@@ -8,22 +8,24 @@ namespace NetCandidateSuite
     {
         public static char GetCharAt(string input, int charAt)
         {
-            if (!String.IsNullOrEmpty(input) && charAt > 0)
+            if (String.IsNullOrEmpty(input))
             {
-                var mod = charAt % input.Length;
+                throw new ArgumentNullException();
+            }
+            if (charAt <= 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
 
-                if(mod == 0)
-                {
-                    return input[input.Length - 1];
-                }
-                else
-                {
-                    return input[mod - 1];
-                }
+            var mod = charAt % input.Length;
+
+            if(mod == 0)
+            {
+                return input[input.Length - 1];
             }
             else
             {
-                throw new ArgumentOutOfRangeException();
+                return input[mod - 1];
             }
         }
     }

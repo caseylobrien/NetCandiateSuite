@@ -12,7 +12,7 @@ namespace NetCandidateSuiteTests
         {
             Action action = () => StringManipulation.GetCharAt(String.Empty, 1);
 
-            Assert.ThrowsException<ArgumentOutOfRangeException>(action);
+            Assert.ThrowsException<ArgumentNullException>(action);
         }
 
         [TestMethod]
@@ -20,7 +20,7 @@ namespace NetCandidateSuiteTests
         {
             Action action = () => StringManipulation.GetCharAt(null, 1);
 
-            Assert.ThrowsException<ArgumentOutOfRangeException>(action);
+            Assert.ThrowsException<ArgumentNullException>(action);
         }
 
         [TestMethod]
