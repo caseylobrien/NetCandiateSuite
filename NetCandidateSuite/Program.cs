@@ -6,7 +6,11 @@ namespace NetCandidateSuite
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var tri = new Triangle(Triangle.TriangleType.Equilateral);
+            var circle = new Circle(0);
+
+            Console.WriteLine(tri.GetDescription());
+            Console.WriteLine(circle.GetDescription());
         }
     }
 }
